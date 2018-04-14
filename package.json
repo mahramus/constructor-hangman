@@ -1,0 +1,28 @@
+{
+  "name": "constructor-hangman",
+  "version": "1.0.0",
+  "description": "A simple hangman game played at the command line using Node.js",
+  "main": "index.js",
+  "dependencies": {
+    "inquirer": "^5.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm help json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahramus/constructor-hangman.git"
+  },
+  "keywords": [
+    "hangman",
+    "constructors",
+    "json"
+  ],
+  "author": "Anthony Mahramus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahramus/constructor-hangman/issues"
+  },
+  "homepage": "https://github.com/mahramus/constructor-hangman#readme"
+}
