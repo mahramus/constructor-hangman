@@ -1,2 +1,3 @@
-# constructor-hangman
-A word guess game using JavaScript and Node.
+# Constructor Hangman
+
+The classic word-guess game using simple JavScript and Node.js.
