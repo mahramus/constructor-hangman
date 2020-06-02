@@ -1,50 +1,35 @@
 var Letter = require("./Letter");
 
-
-
-
-var Word = function() {
-    this.newLetter = newLetter;
-    this.letters = [];
-    this.match = false;
-
-    this.letterGuess = function () {
-        for (var i=0; i < this.target.length; i++){
-            this.letters.push( new Letter(newLetter[i]));
-        }
-        // call function on each letter object
-    };
-
-    this.newWord = function () {
-        this.match = this.letters.every(function(currentLetter){
-            return currentLetter.appear;
-        });
-        return this.found;
-        // call guess function on each letter object
-    };
-
-    this.verifyLetter = function(guessLet){
-        var toReturn = 0;
-
-        for (var i = 0; i < this.lets.length; i++){
-            if (this.lets[i].charac == guessLet){
-                this.lets[i].appear = true;
-                toReturn++;
-            }
-        }
-        return toReturn;
-    };
-
-    this.wordRender = function() {
-        var string = " ";
-        for (var i=0; i < this.lets.length; i++){
-            string += this.lets[i].letterRender();
-        }
-        return string;
-    };
-
-
+function Word(word) {
+  this.letters = word.split("").map(function (char) {
+    return new Letter(char);
+  });
 }
 
+Word.prototype.getSolution = function () {
+  return this.letters
+    .map(function (letter) {
+      return letter.getSolution();
+    })
+    .join("");
+};
+
+Word.prototype.guessLetter = function (char) {
+  var foundLetter = false;
+  this.letters.forEach(function (letter) {
+    if (letter.guess(char)) {
+      foundLetter = true;
+    }
+  });
+
+  console.log("\n" + this + "\n");
+  return foundLetter;
+};
+
+Word.prototype.guessedCorrectly = function () {
+  return this.letters.every(function (letter) {
+    return letter.visible;
+  });
+};
 
 module.exports = Word;

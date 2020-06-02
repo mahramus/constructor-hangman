@@ -1,24 +1,26 @@
-var Letter = function(character) {
-    this.character = character;
-    this.guessed = false;
+function Letter(char) {
+  this.visible = !/[a-z1-9]/i.test(char);
+  this.char = char;
+}
 
-    this.placeholder = function () {
-        // underscore or the correctly guessed letter
-        if (character === " ") {
-            //display guess;
-            this.guessed = true;
-            return " ";
-        } if (this.guessed === false) {
-            return " _ ";
-        } else {
-            return character;
-        }
-        //do nothing; tell them they're wrong
-    };
-    // this.charCheck = function () {
-    //     // checks guess against placeholder
-    // }
-  
+Letter.prototype.toString = function () {
+  if (this.visible === true) {
+    return this.char;
+  }
+  return "_";
 };
-  
+
+Letter.prototype.getSolution = function () {
+  return this.char;
+};
+
+Letter.prototype.guess = function (charGuess) {
+  if (charGuess.toUpperCase() === this.char.toUpperCase()) {
+    this.visible = true;
+    return true;
+  }
+
+  return false;
+};
+
 module.exports = Letter;
